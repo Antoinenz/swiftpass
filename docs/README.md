@@ -10,5 +10,6 @@
 | [security.md](security.md) | Security checklist and threat notes |
 | [performance.md](performance.md) | Performance budgets |
 | [roadmap.md](roadmap.md) | Milestones and Phase 0 spikes |
+| [spike-results.md](spike-results.md) | Measured results from the Phase 0 spikes |
 
 Not affiliated with Proton AG. Details about Proton's API and `pass-cli` are unverified until the Phase 0 spikes finish.
