@@ -15,7 +15,7 @@
 | M1 | Core + CLI-backed source | Login, sync to SQLite, in-memory search, tests |
 | M2 | Menu bar UI | Pre-warmed panel, browse/search/filter, copy, TOTP, Touch ID lock |
 | M3 | Hotkey fill + quiet sync | Fill into any app incl. Chrome; backoff and status states |
-| M4 | macOS AutoFill extension | Safari and native apps via identity store |
+| M4 | (Deferred) macOS AutoFill extension | Only if a paid developer account is acquired |
 | M5 | Native backend replaces `pass-cli` | No external dependency |
 | M6 | Polish | Settings, onboarding, Sparkle updates, install guide, DMG |
 
