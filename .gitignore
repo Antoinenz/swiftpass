@@ -1,0 +1,16 @@
+.DS_Store
+.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.swiftpm/
+
+# AI tooling
+CLAUDE.md
+.claude/
+.cursor/
+
+# secrets
+.env
+*.p12
+*.mobileprovision
