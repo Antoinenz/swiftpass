@@ -17,5 +17,5 @@
 
 ## Open questions
 
-- Can a free Apple ID / unpaid team sign an app that carries the AutoFill credential-provider entitlement and have macOS load the extension? See [autofill.md](autofill.md). This is the largest unknown after the Proton backend question.
+- **Pay for the Apple Developer Program?** Spike result: system AutoFill extension is impossible without it (see [autofill.md](autofill.md)). Without it, hotkey fill is the only autofill. Decision pending.
 - Which Proton backend: wrap `pass-cli`, embed Proton's Rust core, or a native Swift client? See [architecture.md](architecture.md).

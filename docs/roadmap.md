@@ -3,7 +3,7 @@
 ## Phase 0 spikes (~1 week)
 
 1. **Proton backend**: log in and decrypt one login's username, password and TOTP in a Swift test, via `pass-cli` first, then Rust core / native Swift. Record cold/warm timings.
-2. **Free-account AutoFill**: does an AutoFill extension signed with a free team load on macOS? (see [autofill.md](autofill.md))
+2. **Free-account AutoFill**: DONE. Not possible, needs the paid program. See [autofill.md](autofill.md) and `spikes/autofill-signing`.
 3. **Browser behaviour**: what do Safari and Chrome do with a third-party AutoFill provider on current macOS?
 4. **OpenPGP library** choice for Swift.
 

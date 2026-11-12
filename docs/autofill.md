@@ -14,13 +14,21 @@ Chrome: reports suggest Chrome on macOS only uses credential providers for ident
 
 Credentials ready ≤150 ms warm, ≤400 ms right after unlock.
 
-## Signing constraint: no paid developer account
+## Signing constraint: no paid developer account (spike result)
 
-Direct distribution without a paid Apple Developer account means no Developer ID signing and no notarization. Consequences to verify in Phase 0:
+Tested 2026-11-12 on macOS 27.0.1 / Xcode 27.2 (see `spikes/autofill-signing`):
 
-- Users must bypass Gatekeeper (right-click Open, or `xattr -d com.apple.quarantine`). Document this in the install guide.
-- The AutoFill credential-provider entitlement may require a provisioning profile that a free personal team cannot obtain, or that expires (free profiles are short-lived). If so, options are: (a) users build from source with their own Apple ID, (b) ad-hoc signed release with the limitation documented, (c) get a paid account later. If the extension cannot load, hotkey fill becomes the primary autofill path.
-- Spike: build a hello-world AutoFill extension signed with the free team and see whether macOS lists it under System Settings → AutoFill & Passwords.
+- With a **free personal team**, Xcode refuses to issue a profile for the `autofill-credential-provider` entitlement ("team does not have a program membership that is eligible").
+- **Ad-hoc signing** with that entitlement gets the extension registered, but AMFI kills it on launch (SIGKILL). The entitlement is restricted and needs a provisioning profile.
+- The competing app Quick Access for Pass embeds a provisioning profile in its extension and is Developer ID signed.
+
+**Conclusion: the system AutoFill extension needs the paid Apple Developer Program (US$99/yr).** Not possible on the free tier, for users building from source either.
+
+Options:
+1. **Pay for the program** and ship the extension, Developer ID signed and notarized (also removes the Gatekeeper workaround).
+2. **Free-tier release**: hotkey fill (and the menu bar panel) only, no system AutoFill. Gatekeeper must be bypassed manually. Add the extension later if an account is acquired.
+
+The code is structured so the extension is an add-on over the same core, so option 2 loses nothing already built.
 
 ## Domain matching
 
