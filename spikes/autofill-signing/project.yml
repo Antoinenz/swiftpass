@@ -1,0 +1,51 @@
+name: AutofillSpike
+options:
+  bundleIdPrefix: nz.antoinenz.swiftpassspike
+  deploymentTarget:
+    macOS: "13.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: V5944XY7RG
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: 5.0
+targets:
+  SwiftPassSpike:
+    type: application
+    platform: macOS
+    sources: [App]
+    info:
+      path: App/Info.plist
+      properties:
+        LSUIElement: true
+        CFBundleName: SwiftPassSpike
+    entitlements:
+      path: App/App.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: nz.antoinenz.swiftpassspike
+    dependencies:
+      - target: AutofillExt
+  AutofillExt:
+    type: app-extension
+    platform: macOS
+    sources: [Ext]
+    info:
+      path: Ext/Info.plist
+      properties:
+        CFBundleName: AutofillExt
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.authentication-services-credential-provider-ui
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).CredentialProviderViewController
+          NSExtensionAttributes:
+            ASCredentialProviderExtensionCapabilities:
+              ProvidesPasswords: true
+    entitlements:
+      path: Ext/Ext.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.developer.authentication-services.autofill-credential-provider: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: nz.antoinenz.swiftpassspike.ext
